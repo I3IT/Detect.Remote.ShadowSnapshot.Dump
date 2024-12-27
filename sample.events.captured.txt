@@ -1,0 +1,62 @@
+WMI Method Invoked Event Captured! Event ID: 11
+Provider ID: 337178372-45236-17955
+Event Properties:
+Property: CorrelationId Value: {00000000-0000-0000-0000-000000000000}
+Property: GroupOperationId Value: 1492
+Property: OperationId Value: 1495
+Property: Operation Value: Start IWbemServices::ExecMethod - root\cimv2 : Win32_ShadowCopy::Create
+Property: ClientMachine Value: Local
+Property: ClientMachineFQDN Value:
+Property: User Value: DESKTOP-81G2RNN\peter
+Property: ClientProcessId Value: 2640
+Property: ClientProcessCreationTime Value: 0
+Property: NamespaceName Value: \\.\root\cimv2
+Property: IsLocal Value: 1
+
+
+
+WMI Method Invoked Event Captured! Event ID: 11
+Provider ID: 337178372-45236-17955
+Event Properties:
+Property: CorrelationId Value: {00000000-0000-0000-0000-000000000000}
+Property: GroupOperationId Value: 1500
+Property: OperationId Value: 1501
+Property: Operation Value: Start IWbemServices::DeleteInstance - root\cimv2 : Win32_ShadowCopy.ID="{745EBABB-2D5F-486D-89A3-FC1BCCB93121}"
+Property: ClientMachine Value: Local
+Property: ClientMachineFQDN Value:
+Property: User Value: DESKTOP-81G2RNN\peter
+Property: ClientProcessId Value: 2640
+Property: ClientProcessCreationTime Value: 0
+Property: NamespaceName Value: \\.\root\cimv2
+Property: IsLocal Value: 1
+
+
+SMB SERVER Provider Event Captured! Event ID: 8
+Event Properties:
+Property: SessionId Value: 2c000000001d
+Property: ProcessId Value: 0
+Property: TreeId Value: 1
+Property: MessageId Value: 9
+Property: MasterMessageId Value: ffffffffffffffff
+Property: Command Value: [Unsupported Type]
+Property: CreditsRequested Value: [Unsupported Type]
+Property: Flags Value: 0
+Property: SecurityFlags Value: [Unsupported Type]
+Property: RequestedOplockLevel Value: [Unsupported Type]
+Property: ImpersonationLevel Value: 2
+Property: CreateFlags Value: 0
+Property: RootDirectoryFid Value: 0
+Property: DesiredAccess Value: 1
+Property: FileAttributes Value: 0
+Property: ShareAccess Value: 1
+Property: CreateDisposition Value: 1
+Property: CreateOptions Value: 40
+Property: NameLength Value: [Unsupported Type]
+Property: FileName Value: System32\config\SAM
+Property: CreateContextsCount Value: 1
+Property: LeaseKey Value: {0-0-0-00-000000}
+Property: LeaseLevel Value: 0
+Property: ConnectionGUID Value: {a33e9acb-584e-0-144e-3fa34e58db1}
+Property: SessionGUID Value: {a33e9acb-584e-0-184e-3fa34e58db1}
+Property: TreeConnectGUID Value: {a33e9acb-584e-1-7c4e-3fa34e58db1}
+
