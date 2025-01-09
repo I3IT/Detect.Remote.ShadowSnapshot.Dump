@@ -16,17 +16,19 @@ static const GUID WMI_PROVIDER_GUID = { 0x1418ef04, 0xb0b4, 0x4623, { 0xbf, 0x7e
 // Microsoft-Windows-SMBServer {D48CE617-33A2-4BC3-A5C7-11AA4F29619E}
 static const GUID SMBSERVER_PROVIDER_GUID = { 0xd48ce617, 0x33a2, 0x4bc3, { 0xa5, 0xc7, 0x11, 0xaa, 0x4f, 0x29, 0x61, 0x9e } };
 
-bool g_keepRunning = true;
+TRACEHANDLE traceHandle = 0;
 
 bool possible_dumping_detected = false;
 bool dumping_detected = false;
 
 // Signal handler for Ctrl+C
-void SignalHandler(int signal) {
-    if (signal == SIGINT) {
+BOOL WINAPI SignalHandler(DWORD fdwCtrlType) {
+    if (fdwCtrlType == CTRL_C_EVENT) {
         std::wcout << std::endl << L"Ctrl+C pressed. Stopping ETW session..." << std::endl;
-        g_keepRunning = false;
+        CloseTrace(traceHandle);
+        return true;
     }
+    return false;
 }
 
 void ParseAndPrintEventData(PEVENT_RECORD EventRecord) {
@@ -204,7 +206,6 @@ VOID WINAPI EventRecordCallback(PEVENT_RECORD EventRecord) {
 // Function to start ETW session
 bool StartETWSession() {
     TRACEHANDLE sessionHandle = 0;
-    TRACEHANDLE traceHandle = 0;
 
     // Session name
     const WCHAR* sessionName = L"RemoteShadowSnapshotDumpITRESIT";
@@ -290,16 +291,13 @@ bool StartETWSession() {
 
     // Process the trace
     std::wcout << L"Processing trace... Press Ctrl+C to stop." << std::endl;
-    while (g_keepRunning) {
-        ULONG status = ProcessTrace(&traceHandle, 1, nullptr, nullptr);
-        if (status != ERROR_SUCCESS && status != ERROR_CANCELLED) {
-            std::wcerr << L"Failed to process trace. Error: " << status << std::endl;
-            break;
-        }
-    }
-
+    
+	status = ProcessTrace(&traceHandle, 1, nullptr, nullptr);
+	if (status != ERROR_SUCCESS && status != ERROR_CANCELLED) {
+		std::wcerr << L"Failed to process trace. Error: " << status << std::endl;
+	}
+    
     // Clean up
-    CloseTrace(traceHandle);
     StopTrace(sessionHandle, sessionName, sessionProperties);
     HeapFree(GetProcessHeap(), 0, sessionProperties);
     return true;
@@ -307,7 +305,7 @@ bool StartETWSession() {
 
 int main() {
     // Register Ctrl+C signal handler
-    std::signal(SIGINT, SignalHandler);
+    SetConsoleCtrlHandler(SignalHandler, TRUE);
 
     if (!StartETWSession()) {
         std::wcerr << L"Failed to start ETW session." << std::endl;
