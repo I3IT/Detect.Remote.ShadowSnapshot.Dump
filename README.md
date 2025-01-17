@@ -17,6 +17,7 @@ If this behaviour is detected, i.e, a Shadow Snapshot is created, then SAM, SYST
 
 This project relies purely in ETW.
 
+![Sample Exec](snapshots%2F2025-01-17%2014-24-08.gif)
 
 # Example
 
