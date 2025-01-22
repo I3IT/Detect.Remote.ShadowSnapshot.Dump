@@ -1,6 +1,6 @@
 ﻿# Detect.Remote.ShadowSnapshot.Dump
 
-This projects detects remote local credentials dumps using the "Shadow Snapshot method". This was implemented in Impacket in the following PR: [[SECRETSDUMP] New Dump Method - Shadow Snapshot Method via WMI](https://github.com/fortra/impacket/pull/1719).
+This project detects remote local credentials dumps using the "Shadow Snapshot method". This was implemented in Impacket in the following PR: [[SECRETSDUMP] New Dump Method - Shadow Snapshot Method via WMI](https://github.com/fortra/impacket/pull/1719).
 
 This project leverages Event Tracing for Windows (ETW) to monitor this behaviour.
 
