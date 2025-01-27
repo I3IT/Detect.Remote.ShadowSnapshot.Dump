@@ -11,7 +11,7 @@ This PoC uses the Microsoft-Windows-WMI-Activity ETW provider to trace WMI metho
 2. Shadow Copy removal.
 
 And this PoC monitor the Microsoft-Windows-SMBClient ETW provider for events indicating file reads over the SMB protocol.
-1. Detect reads to _SYSTEM32\CONFIF\SAM_,  _SYSTEM32\CONFIG\SECURITY_ and/or  _SYSTEM32\CONFIG\SYSTEM_.
+1. Detect reads to _SYSTEM32\CONFIG\SAM_,  _SYSTEM32\CONFIG\SECURITY_ and/or  _SYSTEM32\CONFIG\SYSTEM_.
 
 If this behaviour is detected, i.e, a Shadow Snapshot is created, then SAM, SYSTEM and/or SECURITY accessed via SMB and then the SS removed these are indicators about the use of that technique.
 
